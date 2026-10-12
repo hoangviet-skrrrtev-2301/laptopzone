@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LaptopZone - Thế Giới Laptop Chính Hãng, Giá Rẻ Hàng Đầu</title>
+  <meta name="description" content="Hệ thống bán lẻ laptop chính hãng uy tín: MacBook, Gaming, Văn phòng, Đồ họa. Trả góp 0%, giao hàng siêu tốc toàn quốc.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- 1. TOPBAR: THÔNG TIN ƯU ĐÃI & HỖ TRỢ -->
+  <aside class="topbar" aria-label="Thông báo ưu đãi">
+    <div class="container topbar-content">
+      <div class="topbar-left flex" style="gap: 1.25rem;">
+        <span>🔥 <strong>ĐẠI TIỆC LAPTOP 2026:</strong> Giảm thêm tới 2.000.000đ khi nhập mã <code>LAPTOPZONE10</code></span>
+      </div>
+      <div class="topbar-right flex" style="gap: 1.5rem;">
+        <span>📞 Hotline: <strong>1800 6868</strong> (Miễn phí)</span>
+        <span>🚚 Giao hàng toàn quốc</span>
+        <span>🛡️ Cam kết 100% Chính Hãng</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 2. HEADER CHÍNH -->
+  <header class="header">
+    <div class="container header-main">
+      <!-- Logo thương hiệu -->
+      <a href="index.html" class="logo" title="LaptopZone Trang chủ">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="1" y1="20" x2="23" y2="20"></line>
+          </svg>
+        </div>
+        <span>Laptop<strong>Zone</strong></span>
+      </a>
+
+      <!-- Thanh tìm kiếm thông minh -->
+      <div class="search-box">
+        <div class="search-input-wrapper">
+          <input type="text" id="search-input" class="search-input" placeholder="Tìm theo tên máy, hãng (Apple, Asus...), CPU, card VGA..." autocomplete="off">
+          <button id="search-btn" class="search-btn" title="Tìm kiếm" aria-label="Tìm kiếm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
+        <!-- Dropdown kết quả gợi ý -->
+        <div id="search-dropdown" class="search-dropdown"></div>
+      </div>
+
+      <!-- Các nút thao tác Header -->
+      <div class="header-actions">
+        <!-- Nút So sánh cấu hình -->
+        <button id="open-compare-btn" class="btn-icon" title="So sánh laptop" aria-label="So sánh">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          <span id="compare-badge" class="badge-count" style="display: none;">0</span>
+        </button>
+
+        <!-- Nút Yêu thích (Wishlist) -->
+        <button id="open-wishlist-btn" class="btn-icon" title="Sản phẩm yêu thích" aria-label="Yêu thích">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span id="wishlist-badge" class="badge-count" style="display: none;">0</span>
+        </button>
+
+        <!-- Nút Giỏ hàng (Cart) -->
+        <button id="open-cart-btn" class="btn btn-primary" title="Mở giỏ hàng" aria-label="Giỏ hàng">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span>Giỏ hàng</span>
+          <span id="cart-badge" class="badge-count" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Thanh danh mục nhanh -->
+    <nav class="sub-nav">
+      <div class="container nav-pills" id="category-pills">
+        <button class="nav-pill active" data-category="all">⚡ Tất cả sản phẩm</button>
+        <button class="nav-pill" data-category="gaming">🎮 Laptop Gaming</button>
+        <button class="nav-pill" data-category="office">📚 Văn phòng - Sinh viên</button>
+        <button class="nav-pill" data-category="creator">🎨 Đồ họa - Kỹ thuật</button>
+        <button class="nav-pill" data-category="premium">💎 Mỏng nhẹ - Doanh nhân</button>
+        <button class="nav-pill" data-category="macbook">🍎 Apple MacBook</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 3. NỘI DUNG CHÍNH (MAIN) -->
+  <main>
+    <!-- HERO BANNER SECTION -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-banner-main">
+          <span class="badge badge-sale" style="width: fit-content; margin-bottom: 0.75rem;">Ưu đãi độc quyền 2026</span>
+          <h1>NÂNG TẦM TRẢI NGHIỆM VỚI LAPTOP THẾ HỆ MỚI</h1>
+          <p>Sở hữu các dòng laptop trang bị chip AI tiên tiến, card đồ họa RTX 40 Series với mức giá ưu đãi nhất thị trường. Hỗ trợ trả góp 0% lãi suất.</p>
+          <div class="flex" style="gap: 1rem;">
+            <a href="#catalog-section" class="btn btn-primary">Khám phá ngay</a>
+            <button class="btn btn-secondary" onclick="document.getElementById('search-input').focus()">Tìm laptop phù hợp</button>
+          </div>
+        </div>
+        <div class="hero-sub-banners">
+          <div class="sub-banner-card">
+            <span class="badge badge-hot" style="width: fit-content; margin-bottom: 0.5rem;">Laptop AI Thế hệ mới</span>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">Intel Core Ultra & M3 Series</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Xử lý tác vụ AI mượt mà, thời lượng pin cả ngày dài.</p>
+            <a href="#catalog-section" class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 12px; width: fit-content;">Xem mẫu AI</a>
+          </div>
+          <div class="sub-banner-card">
+            <span class="badge badge-installment" style="width: fit-content; margin-bottom: 0.5rem;">Cỗ máy chiến game</span>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">Gaming RTX 40-Series</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Màn hình 240Hz, tản nhiệt buồng hơi siêu êm ái.</p>
+            <a href="#catalog-section" class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 12px; width: fit-content;">Xem Laptop Gaming</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THANH THƯƠNG HIỆU (BRAND BAR) -->
+    <section class="brand-bar">
+      <div class="container">
+        <div class="brand-list" id="brand-list">
+          <button class="brand-item active" data-brand="all">Tất cả thương hiệu</button>
+          <button class="brand-item" data-brand="apple">🍎 Apple</button>
+          <button class="brand-item" data-brand="asus">ASUS</button>
+          <button class="brand-item" data-brand="dell">Dell</button>
+          <button class="brand-item" data-brand="lenovo">Lenovo</button>
+          <button class="brand-item" data-brand="hp">HP</button>
+          <button class="brand-item" data-brand="acer">Acer</button>
+          <button class="brand-item" data-brand="msi">MSI</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- KHU VỰC DANH MỤC & BỘ LỌC CHÍNH (CATALOG) -->
+    <section class="container catalog-layout" id="catalog-section">
+      <!-- SIDEBAR BỘ LỌC -->
+      <aside class="filter-sidebar" id="filter-sidebar">
+        <div class="flex-between" style="margin-bottom: 1.25rem;">
+          <h2 style="font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            Bộ lọc nâng cao
+          </h2>
+          <button id="reset-filter-btn" class="btn-outline" style="padding: 0.25rem 0.6rem; font-size: 11px; border-radius: 4px;" title="Đặt lại bộ lọc">
+            Đặt lại
+          </button>
+        </div>
+
+        <!-- Lọc theo Khoảng giá -->
+        <div class="filter-group">
+          <div class="filter-title">Mức giá</div>
+          <div class="filter-options" id="filter-price-options">
+            <label class="filter-label">
+              <input type="radio" name="price-range" value="all" checked>
+              <span>Tất cả mức giá</span>
+            </label>
+            <label class="filter-label">
+              <input type="radio" name="price-range" value="under-15m">
+              <span>Dưới 15 triệu</span>
+            </label>
+            <label class="filter-label">
+              <input type="radio" name="price-range" value="15m-25m">
+              <span>15 - 25 triệu</span>
+            </label>
+            <label class="filter-label">
+              <input type="radio" name="price-range" value="25m-35m">
+              <span>25 - 35 triệu</span>
+            </label>
+            <label class="filter-label">
+              <input type="radio" name="price-range" value="above-35m">
+              <span>Trên 35 triệu</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Lọc theo Nhu cầu sử dụng -->
+        <div class="filter-group">
+          <div class="filter-title">Nhu cầu sử dụng</div>
+          <div class="filter-options" id="filter-category-options">
+            <label class="filter-label">
+              <input type="checkbox" name="category-filter" value="gaming">
+              <span>Laptop Gaming</span>
+            </label>
+            <label class="filter-label">
+              <input type="checkbox" name="category-filter" value="office">
+              <span>Học tập & Văn phòng</span>
+            </label>
+            <label class="filter-label">
+              <input type="checkbox" name="category-filter" value="creator">
+              <span>Đồ họa & Kỹ thuật</span>
+            </label>
+            <label class="filter-label">
+              <input type="checkbox" name="category-filter" value="premium">
+              <span>Cao cấp & Doanh nhân</span>
+            </label>
+            <label class="filter-label">
+              <input type="checkbox" name="category-filter" value="macbook">
+              <span>Apple MacBook</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Lọc theo Dung lượng RAM -->
+        <div class="filter-group">
+          <div class="filter-title">Dung lượng RAM</div>
+          <div class="filter-options" id="filter-ram-options">
+            <label class="filter-label">
+              <input type="checkbox" name="ram-filter" value="8gb">
+              <span>8 GB</span>
+            </label>
+            <label class="filter-label">
+              <input type="checkbox" name="ram-filter" value="16gb">
+              <span>16 GB</span>
+            </label>
+            <label class="filter-label">
+              <input type="checkbox" name="ram-filter" value="32gb">
+              <span>32 GB trở lên</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Lọc theo Vi xử lý (CPU) -->
+        <div class="filter-group">
+          <div class="filter-title">Dòng CPU</div>
+          <div class="filter-options">
+            <label class="filter-label">
+              <input type="checkbox" name="cpu-filter" value="intel">
+              <span>Intel Core / Core Ultra</span>
+            </label>
+            <label class="filter-label">
+              <input type="checkbox" name="cpu-filter" value="apple">
+              <span>Apple Silicon (M2 / M3)</span>
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- KHU VỰC DANH SÁCH SẢN PHẨM -->
+      <div class="catalog-content">
+        <!-- Thanh công cụ sắp xếp & đếm số lượng -->
+        <div class="catalog-header">
+          <div class="catalog-count">
+            Hiển thị <strong id="product-total-count">0</strong> sản phẩm
+          </div>
+          <div class="flex-center" style="gap: 0.5rem;">
+            <label for="sort-select" style="font-size: var(--fs-sm); color: var(--text-muted);">Sắp xếp:</label>
+            <select id="sort-select" class="sort-select">
+              <option value="featured">✨ Nổi bật & Bán chạy</option>
+              <option value="price-asc">Giá tăng dần</option>
+              <option value="price-desc">Giá giảm dần</option>
+              <option value="rating-desc">Đánh giá cao nhất</option>
+              <option value="name-asc">Tên từ A - Z</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Lưới sản phẩm (Render bằng JavaScript) -->
+        <div class="product-grid" id="product-grid">
+          <!-- Các thẻ sản phẩm sẽ được tự động hiển thị tại đây -->
+        </div>
+
+        <!-- Khung hiển thị rỗng khi không tìm thấy kết quả -->
+        <div id="empty-state" style="display: none; text-align: center; padding: 4rem 1rem; background-color: var(--bg-card); border-radius: var(--radius-lg); border: 1px dashed var(--border-color);">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Không tìm thấy laptop phù hợp</h3>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem; max-width: 420px; margin-left: auto; margin-right: auto;">
+            Rất tiếc, không có sản phẩm nào khớp với tiêu chí tìm kiếm hoặc bộ lọc hiện tại của bạn.
+          </p>
+          <button id="empty-reset-btn" class="btn btn-primary">Xóa bộ lọc & Xem tất cả</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 4. FOOTER: THÔNG TIN CỬA HÀNG -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="logo" style="color: white; margin-bottom: 1rem;">
+          <div class="logo-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="1" y1="20" x2="23" y2="20"></line>
+            </svg>
+          </div>
+          <span>Laptop<strong>Zone</strong></span>
+        </div>
+        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.25rem;">
+          LaptopZone là hệ thống bán lẻ laptop chính hãng hàng đầu, cam kết mang đến những sản phẩm công nghệ tiên tiến nhất với chế độ hậu mãi và bảo hành chu đáo.
+        </p>
+        <p style="font-size: 0.85rem; color: #cbd5e1;">📍 Showroom chính: 123 Đường Công Nghệ, Quận 1, TP. Hồ Chí Minh</p>
+        <p style="font-size: 0.85rem; color: #cbd5e1;">📞 Tổng đài mua hàng: <strong>1800 6868</strong></p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Về LaptopZone</h4>
+        <div class="footer-links">
+          <a href="#">Giới thiệu công ty</a>
+          <a href="#">Hệ thống cửa hàng</a>
+          <a href="#">Tuyển dụng nhân tài</a>
+          <a href="#">Tin tức công nghệ</a>
+          <a href="#">Liên hệ & Hợp tác</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Chính sách & Hỗ trợ</h4>
+        <div class="footer-links">
+          <a href="#">Chính sách bảo hành 12-24T</a>
+          <a href="#">Chính sách 1 đổi 1 trong 30 ngày</a>
+          <a href="#">Hướng dẫn mua trả góp 0%</a>
+          <a href="#">Chính sách giao hàng toàn quốc</a>
+          <a href="#">Bảo mật thông tin khách hàng</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Phương thức thanh toán</h4>
+        <div class="flex" style="flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+          <span style="background: rgba(255,255,255,0.1); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 12px; color: white;">Tiền mặt (COD)</span>
+          <span style="background: rgba(255,255,255,0.1); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 12px; color: white;">Chuyển khoản QR</span>
+          <span style="background: rgba(255,255,255,0.1); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 12px; color: white;">Thẻ Visa/Master</span>
+          <span style="background: rgba(255,255,255,0.1); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 12px; color: white;">Ví MoMo/ZaloPay</span>
+        </div>
+        <h4 style="margin-top: 1rem;">Chứng nhận chất lượng</h4>
+        <p style="font-size: 0.8rem; color: #94a3b8;">Đại lý ủy quyền chính hãng của Apple, Asus, Dell, Lenovo, HP, Acer, MSI tại Việt Nam.</p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      © 2026 LaptopZone. Toàn bộ bản quyền thuộc về LaptopZone Việt Nam.
+    </div>
+  </footer>
+
+  <!-- 5. CÁC KHUNG OVERLAY, MODAL & DRAWER -->
+  <div id="overlay-backdrop" class="overlay"></div>
+
+  <!-- SLIDE-OVER DRAWER: GIỎ HÀNG -->
+  <div id="cart-drawer" class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+    <div class="cart-header">
+      <h3 id="cart-title" style="font-size: 1.15rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        Giỏ hàng của bạn (<span id="cart-items-count">0</span>)
+      </h3>
+      <button id="close-cart-btn" class="btn-icon" aria-label="Đóng giỏ hàng" style="width: 32px; height: 32px;">
+        ✕
+      </button>
+    </div>
+
+    <div class="cart-body" id="cart-items-container">
+      <!-- Danh sách sản phẩm trong giỏ sẽ được render bằng JS -->
+    </div>
+
+    <div class="cart-footer" id="cart-footer-summary">
+      <!-- Khung nhập voucher -->
+      <div class="flex" style="gap: 0.5rem; margin-bottom: 1rem;">
+        <input type="text" id="voucher-input" placeholder="Mã giảm giá (VD: LAPTOPZONE10)" style="flex: 1; padding: 0.55rem 0.85rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-size: var(--fs-sm); text-transform: uppercase;">
+        <button id="apply-voucher-btn" class="btn btn-secondary" style="padding: 0.55rem 0.95rem;">Áp dụng</button>
+      </div>
+      <div id="voucher-message" style="font-size: 12px; margin-bottom: 0.75rem; display: none;"></div>
+
+      <!-- Tóm tắt chi phí -->
+      <div style="font-size: var(--fs-sm); margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.35rem;">
+        <div class="flex-between">
+          <span style="color: var(--text-muted);">Tạm tính:</span>
+          <strong id="cart-subtotal">0 đ</strong>
+        </div>
+        <div class="flex-between" id="cart-discount-row" style="display: none; color: var(--accent-green);">
+          <span>Giảm giá:</span>
+          <strong id="cart-discount">-0 đ</strong>
+        </div>
+        <div class="flex-between">
+          <span style="color: var(--text-muted);">Vận chuyển:</span>
+          <span style="color: var(--accent-green); font-weight: 600;">Miễn phí</span>
+        </div>
+        <div class="flex-between" style="font-size: var(--fs-lg); border-top: 1px dashed var(--border-color); padding-top: 0.5rem; margin-top: 0.25rem;">
+          <span style="font-weight: 700;">Tổng thanh toán:</span>
+          <strong id="cart-total" style="color: var(--accent-red); font-size: 1.25rem;">0 đ</strong>
+        </div>
+      </div>
+
+      <button id="checkout-btn" class="btn btn-primary" style="width: 100%; padding: 0.85rem;">
+        Tiến hành đặt hàng ngay
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL: XEM CHI TIẾT SẢN PHẨM & THÔNG SỐ KỸ THUẬT -->
+  <div id="product-detail-modal" class="modal" role="dialog" aria-modal="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 860px;">
+      <div class="modal-header">
+        <h3 id="modal-product-title" style="font-size: 1.25rem; font-weight: 700;">Thông tin chi tiết</h3>
+        <button id="close-detail-modal" class="btn-icon" style="width: 32px; height: 32px;">✕</button>
+      </div>
+      <div class="modal-body" id="modal-product-content">
+        <!-- Chi tiết sản phẩm render động -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: SO SÁNH CẤU HÌNH SẢN PHẨM -->
+  <div id="compare-modal" class="modal" role="dialog" aria-modal="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 960px;">
+      <div class="modal-header">
+        <h3 style="font-size: 1.25rem; font-weight: 700;">So sánh thông số kỹ thuật Laptop</h3>
+        <button id="close-compare-modal" class="btn-icon" style="width: 32px; height: 32px;">✕</button>
+      </div>
+      <div class="modal-body" id="compare-modal-content">
+        <!-- Bảng so sánh render động -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ĐẶT HÀNG & THANH TOÁN GIẢ LẬP (CHECKOUT) -->
+  <div id="checkout-modal" class="modal" role="dialog" aria-modal="true" style="display: none;">
+    <div class="modal-dialog" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3 style="font-size: 1.25rem; font-weight: 700;">Xác nhận thông tin đặt hàng</h3>
+        <button id="close-checkout-modal" class="btn-icon" style="width: 32px; height: 32px;">✕</button>
+      </div>
+      <div class="modal-body" id="checkout-modal-content">
+        <!-- Form thanh toán render động -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. KHUNG TOAST THÔNG BÁO TỨC THÌ -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- 7. LIÊN KẾT MÃ NGUỒN JAVASCRIPT THUẦN -->
+  <script src="js/data.js"></script>
+  <script src="js/filter.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/compare.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+

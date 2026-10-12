@@ -1,0 +1,230 @@
+/* ==========================================================================
+   LAPTOPZONE - RESPONSIVE STYLESHEET
+   Tối ưu hóa hiển thị mượt mà trên Mobile (<768px), Tablet (768-1024px) & Desktop
+   ========================================================================== */
+
+/* 1. MÀN HÌNH MÁY TÍNH BẢNG (TABLET: 768px - 1024px) */
+@media (max-width: 1024px) {
+  .catalog-layout {
+    grid-template-columns: 230px 1fr;
+    gap: 1.25rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
+  }
+
+  .hero-banner-main {
+    padding: 1.75rem;
+  }
+
+  .hero-banner-main h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* 2. MÀN HÌNH ĐIỆN THOẠI DI ĐỘNG (MOBILE: < 768px) */
+@media (max-width: 768px) {
+  /* Topbar tinh gọn */
+  .topbar-right {
+    display: none;
+  }
+
+  .topbar-content {
+    justify-content: center;
+    text-align: center;
+    font-size: 11px;
+  }
+
+  /* Header di động */
+  .header-main {
+    height: auto;
+    padding: 0.75rem 0;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .search-box {
+    order: 3;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  #open-cart-btn span:not(.badge-count) {
+    display: none; /* Chỉ hiển thị icon và badge trên mobile để tiết kiệm diện tích */
+  }
+
+  #open-cart-btn {
+    padding: 0.65rem 0.85rem;
+  }
+
+  /* Hero Section */
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-banner-main {
+    padding: 1.5rem 1.25rem;
+    min-height: auto;
+  }
+
+  .hero-banner-main h1 {
+    font-size: 1.35rem;
+  }
+
+  .hero-banner-main p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-sub-banners {
+    display: none; /* Ẩn banner phụ trên màn hình nhỏ để tránh choáng ngợp */
+  }
+
+  /* Thanh danh mục & Thương hiệu cuộn mượt */
+  .brand-list {
+    justify-content: flex-start;
+  }
+
+  .brand-item {
+    flex: 0 0 auto;
+    font-size: 13px;
+    padding: 0.5rem 0.85rem;
+  }
+
+  /* Bố cục Danh mục & Bộ lọc (Mobile Single Column) */
+  .catalog-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem 0 2rem 0;
+  }
+
+  .filter-sidebar {
+    position: static;
+    margin-bottom: 0.5rem;
+  }
+
+  .catalog-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .catalog-header .flex-center {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* Lưới sản phẩm trên mobile (2 cột) */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .product-card {
+    padding: 0.75rem;
+  }
+
+  .product-thumb {
+    height: 120px;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-title {
+    font-size: 13px;
+    height: 2.7em;
+  }
+
+  .current-price {
+    font-size: 14px;
+  }
+
+  .original-price {
+    font-size: 10px;
+    display: block;
+    margin-left: 0;
+  }
+
+  .product-card-actions {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .product-card-actions .btn {
+    padding: 0.45rem 0.5rem;
+    font-size: 12px;
+  }
+
+  .spec-pill {
+    font-size: 10px;
+    padding: 0.15rem 0.35rem;
+  }
+
+  /* Modal chi tiết trên di động */
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .detail-img-box {
+    max-height: 220px;
+    padding: 0.75rem;
+  }
+
+  .detail-img-box img {
+    max-height: 180px;
+  }
+
+  .specs-table td {
+    padding: 0.45rem 0.5rem;
+    font-size: 12px;
+  }
+
+  /* Slide-over Cart Drawer chiếm trọn màn hình */
+  .cart-drawer {
+    max-width: 100%;
+  }
+
+  /* Form thanh toán */
+  .payment-options {
+    grid-template-columns: 1fr;
+  }
+
+  /* Bảng so sánh hỗ trợ cuộn ngang mượt */
+  .compare-table {
+    min-width: 580px;
+  }
+
+  /* Chân trang */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .toast-container {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
+/* 3. MÀN HÌNH SIÊU NHỎ (EXTRA SMALL: < 400px) */
+@media (max-width: 400px) {
+  .product-grid {
+    grid-template-columns: 1fr; /* 1 cột duy nhất cho màn hình rất hẹp */
+  }
+
+  .product-thumb {
+    height: 160px;
+  }
+}
+
